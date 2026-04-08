@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("/assets/fonts/Figtree.woff2") format("woff2");
+  font-weight: 300 900;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Teal primary: #2FA7A1 -> oklch ~0.65 0.10 192 */
+    --teal: 0.65 0.1 192;
+    --teal-dark: 0.58 0.11 192;
+
+    /* Near-black #111827 -> oklch ~0.18 0.01 264 */
+    --foreground: 0.18 0.01 264;
+    /* Cool gray #6B7280 -> oklch ~0.52 0.02 264 */
+    --muted-foreground: 0.52 0.02 264;
+    /* Light gray bg #F4F6F7 -> oklch ~0.97 0.005 220 */
+    --background: 0.97 0.005 220;
+    /* White card */
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.01 264;
+    /* Borders #E5E7EB -> oklch ~0.92 0.005 264 */
+    --border: 0.92 0.005 264;
+    --input: 0.92 0.005 264;
+    /* Surface #F3F4F6 -> oklch ~0.96 0.005 264 */
+    --surface: 0.96 0.005 264;
+
+    --primary: var(--teal);
+    --primary-foreground: 1 0 0;
+    --secondary: 0.96 0.005 264;
+    --secondary-foreground: 0.18 0.01 264;
+    --muted: 0.96 0.005 264;
+    --accent: 0.96 0.005 264;
+    --accent-foreground: 0.18 0.01 264;
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.01 264;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    --ring: 0.65 0.1 192;
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+    --sidebar: 0.985 0 0;
+    --sidebar-foreground: 0.145 0 0;
+    --sidebar-primary: 0.205 0 0;
+    --sidebar-primary-foreground: 0.985 0 0;
+    --sidebar-accent: 0.97 0 0;
+    --sidebar-accent-foreground: 0.205 0 0;
+    --sidebar-border: 0.922 0 0;
+    --sidebar-ring: 0.708 0 0;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  }
+}
+
+/* Screen: hide print area */
+#print-area {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Print: show only #print-area */
+@media print {
+  body > *:not(#print-area) {
+    display: none !important;
+  }
+
+  #print-area {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    padding: 48px;
+    background: white;
+    color: black;
+    font-family: "Plus Jakarta Sans", sans-serif;
+  }
+
+  #print-area h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  #print-area p {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+}
